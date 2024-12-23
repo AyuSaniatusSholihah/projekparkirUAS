@@ -1,0 +1,123 @@
+# Sistem Parkir Kampus
+
+## Deskripsi Program
+Program ini merupakan sistem parkir berbasis bahasa C yang dirancang untuk mempermudah pengelolaan parkir di lingkungan kampus, khususnya bagi dosen dan mahasiswa. Sistem ini membagi slot parkir menjadi tiga kategori, yaitu parkir mobil dosen, motor dosen, dan motor mahasiswa. Setiap slot parkir dikelola menggunakan array, dengan status `0` untuk slot kosong dan `1` untuk slot terisi. Program ini mendukung pengelolaan parkir yang efisien dan memudahkan pengguna dalam mengakses layanan parkir di kampus.
+
+---
+
+## Fitur Utama
+1. **Masuk Parkir**:
+   - Validasi ID pengguna (dosen atau mahasiswa) melalui file `mahasiswa.txt` dan `dosen.txt`.
+   - Menampilkan nama, ID, dan kategori pengguna setelah validasi.
+   - Pengguna memilih slot parkir berdasarkan jenis kendaraan.
+   - Sistem mencatat waktu masuk untuk setiap kendaraan yang terparkir.
+
+2. **Keluar Parkir**:
+   - Pengguna mengosongkan slot yang digunakan, sehingga slot dapat digunakan oleh pengguna lain.
+   - Sistem menghitung durasi parkir berdasarkan waktu masuk dan keluar.
+
+3. **Cek Slot Parkir**:
+   - Menampilkan kondisi slot parkir secara real-time, termasuk ID kendaraan yang sedang terparkir.
+
+4. **Cari Kendaraan**:
+   - Memungkinkan pengguna mencari lokasi kendaraan di slot parkir berdasarkan ID kendaraan.
+
+5. **Cek Data Log Parkir**:
+   - Membaca dan menampilkan log kendaraan dari file `parkir_log.txt` yang mencatat waktu masuk dan keluar kendaraan.
+
+6. **Keluar Program**:
+   - Mengakhiri program dengan aman.
+
+---
+
+## Struktur Parkir
+- **Mobil:**
+  - Terdapat 2 lantai parkir khusus mobil (lantai 2 dan 3).
+  - Setiap lantai memiliki 36 slot parkir.
+- **Motor:**
+  - Terdapat 1 lantai parkir khusus motor (lantai 1).
+  - Lantai ini memiliki 72 slot parkir.
+
+---
+
+## Cara Instalasi
+1. Pastikan Anda memiliki compiler C, seperti GCC, di sistem Anda.
+2. Unduh file program `sistem_parkir.c`.
+3. Unduh file data pendukung `mahasiswa.txt`, `dosen.txt`, dan `parkir_log.txt` (opsional jika log belum ada).
+4. Simpan semua file di direktori kerja yang sama.
+
+---
+
+## Cara Menjalankan Program
+1. Kompilasi program menggunakan perintah:
+   ```bash
+   gcc -o sistem_parkir sistem_parkir.c
+   ```
+2. Jalankan program menggunakan:
+   ```bash
+   ./sistem_parkir
+   ```
+3. Ikuti instruksi di menu utama untuk menggunakan fitur yang tersedia.
+
+---
+
+## Struktur File
+1. **`mahasiswa.txt`**:
+   - File yang berisi data mahasiswa yang valid untuk menggunakan sistem parkir.
+   - Format: `ID|Nama|Kategori`
+
+2. **`dosen.txt`**:
+   - File yang berisi data dosen yang valid untuk menggunakan sistem parkir.
+   - Format: `ID|Nama|Kategori`
+
+3. **`parkir_log.txt`**:
+   - File log yang mencatat waktu masuk dan keluar kendaraan.
+   - Format: `ID|Jenis|Waktu Masuk|Waktu Keluar|Lantai|Slot`
+
+4. **Program Utama**:
+   - Mengelola seluruh fungsi sistem parkir, termasuk validasi ID dan pengelolaan slot parkir.
+
+5. **fungsi.h**:
+   - Header file eksternal yang menyimpan deklarasi fungsi-fungsi tambahan untuk mendukung program, seperti:
+     - `void kendaraanMasuk(int slot[], int jumlah_slot, int lantai, const char* jenis);`
+     - `void kendaraanKeluar(int slot[], int jumlah_slot, int lantai);`
+     - `void tampilkan_denah(int slot[], int lantai, int jumlah_slot);`
+
+---
+
+## Menu Program
+1. **Masuk Parkir**:
+   - Masukkan ID pengguna.
+   - Sistem memvalidasi ID menggunakan file `mahasiswa.txt` atau `dosen.txt`.
+   - Jika valid, pilih slot parkir yang tersedia.
+   - Sistem mencatat waktu masuk.
+
+2. **Keluar Parkir**:
+   - Masukkan ID pengguna.
+   - Sistem memvalidasi ID dan mengosongkan slot parkir yang digunakan.
+   - Sistem menghitung durasi parkir.
+
+3. **Cek Slot Parkir**:
+   - Menampilkan status slot parkir, termasuk ID kendaraan yang sedang terparkir.
+
+4. **Cari Kendaraan**:
+   - Masukkan nomor kendaraan untuk mengetahui lokasi slot parkir kendaraan.
+
+5. **Cek Data Log Parkir**:
+   - Menampilkan log kendaraan yang masuk dan keluar.
+
+6. **Keluar Program**:
+   - Keluar dari program.
+
+---
+
+## Catatan Penting
+- Pastikan file `mahasiswa.txt` dan `dosen.txt` tersedia di direktori yang sama dengan program.
+- Format data di file harus sesuai agar program dapat membaca informasi dengan benar.
+- Hanya ID yang valid yang dapat mengakses layanan parkir.
+- Jika `parkir_log.txt` tidak ditemukan, program akan membuat file baru secara otomatis.
+
+---
+
+## Kontributor
+- **Nama Anda**: Informatika UNS 2024
